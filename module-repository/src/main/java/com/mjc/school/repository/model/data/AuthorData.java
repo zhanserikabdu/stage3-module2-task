@@ -25,9 +25,14 @@ public class AuthorData {
     private void init() {
         this.authorList = new ArrayList();
 
-        for (long i = 1L; i <= 20L; ++i) {
+        for(long i = 1L; i <= 20L; ++i) {
             this.authorList.add(new AuthorModel(i, Utils.getRandomContentByFilePath("authors")));
         }
 
     }
+
+    public List<AuthorModel> getAuthorList() {
+        return this.authorList;
+    }
 }
+
