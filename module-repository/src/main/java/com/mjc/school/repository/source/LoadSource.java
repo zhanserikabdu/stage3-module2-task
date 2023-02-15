@@ -45,7 +45,7 @@ public class LoadSource {
         for (int i = 0; i < 20; i++) {
             AuthorModel authorModel = new AuthorModel(authorList.get(i));
             customDataSource.getAuthorMap().put(authorModel.getId(), authorModel);
-            NewsModel newsModel = new NewsModel(newsList.get(i),contentList.get(i));
+            NewsModel newsModel = new NewsModel(newsList.get(i),contentList.get(i), authorModel.getId());
             customDataSource.getNewsMap().put(newsModel.getId(), newsModel);
         }
     }

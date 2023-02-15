@@ -17,18 +17,17 @@ public class NewsModel {
     private String content;
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
-
-
+    private Long authorId;
     public NewsModel(){
         this.id = nextId.getAndIncrement();
     }
 
-    public NewsModel(String title, String content){
+    public NewsModel(String title, String content, Long authorId){
         this.id = nextId.getAndIncrement();
         this.title = title;
         this.content = content;
         this.createDate = LocalDateTime.now();
         this.lastUpdateDate = LocalDateTime.now();
-
+        this.authorId = authorId;
     }
 }
