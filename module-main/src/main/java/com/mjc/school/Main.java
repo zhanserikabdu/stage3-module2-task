@@ -7,6 +7,5 @@ public class Main {
         manager.init();
         AuthorManager managers = AuthorManager.getInstance();
         managers.init();
-
     }
 }

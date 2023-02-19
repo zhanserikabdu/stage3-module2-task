@@ -9,8 +9,10 @@ import java.util.List;
 
 @Mapper
 public interface AuthorMapper {
-    AuthorMapper AuthorMapper = Mappers.getMapper(AuthorMapper.class);
-    AuthorDto AuthorDto(AuthorModel AuthorModel);
-    AuthorModel Author(AuthorDto AuthorDto);
-    List<AuthorDto> toListDto (List<AuthorModel> AuthorModelModelList);
+    AuthorMapper authorMapper = Mappers.getMapper(AuthorMapper.class);
+    AuthorDto authorDto(AuthorModel authorModel);
+    AuthorModel author(AuthorDto authorDto);
+    List<AuthorDto> toListDto (List<AuthorModel> authorModelModelList);
 }
+
+

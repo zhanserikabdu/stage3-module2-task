@@ -10,3 +10,4 @@ public class GetAllCommand implements Command<AuthorController> {
         MessageHelper.printMessage(controller.readAll().toString());
     }
 }
+

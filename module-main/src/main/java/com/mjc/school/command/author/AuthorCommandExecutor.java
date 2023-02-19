@@ -3,7 +3,14 @@ package com.mjc.school.command.author;
 import com.mjc.school.MessageHelper;
 import com.mjc.school.command.Command;
 import com.mjc.school.command.Operation;
+import com.mjc.school.command.author.CreateCommand;
+import com.mjc.school.command.author.DeleteCommand;
+import com.mjc.school.command.author.ExitCommand;
+import com.mjc.school.command.author.GetAllCommand;
+import com.mjc.school.command.author.GetCommand;
+import com.mjc.school.command.author.UpdateCommand;
 import com.mjc.school.controller.implementation.AuthorController;
+import com.mjc.school.controller.implementation.NewsController;
 import com.mjc.school.service.exceptions.InvalidDataException;
 import com.mjc.school.service.exceptions.NoSuchEntityException;
 

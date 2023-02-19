@@ -14,56 +14,56 @@ import com.mjc.school.service.validator.AuthorValidation;
 import java.util.List;
 
 public class AuthorService implements Service<AuthorDto> {
-    private final Repository<AuthorModel> AuthorRepository;
-    private final AuthorValidation AuthorValidation;
+    private final Repository<AuthorModel> authorRepository;
+    private final AuthorValidation authorValidation;
 
     public AuthorService(){
-        AuthorRepository = new AuthorRepository();
-        AuthorValidation = new AuthorValidation();
+        authorRepository = new AuthorRepository();
+        authorValidation = new AuthorValidation();
     }
 
     @Override
-    public AuthorDto  create(AuthorDto AuthorDto) {
-        ErrorNotification errorNotification = AuthorValidation.validate(AuthorDto);
+    public AuthorDto create(AuthorDto authorDto) {
+        ErrorNotification errorNotification = authorValidation.validate(authorDto);
         if (errorNotification.hasErrors()){
             throw new InvalidDataException(errorNotification.getErrorList().toString());
         }
-        AuthorModel AuthorModel = AuthorRepository.create(AuthorMapper.AuthorMapper.Author(AuthorDto));
-        return AuthorMapper.AuthorMapper.AuthorDto(AuthorModel);
+        AuthorModel authorModel = authorRepository.create(AuthorMapper.authorMapper.author(authorDto));
+        return AuthorMapper.authorMapper.authorDto(authorModel);
     }
 
     @Override
-    public AuthorDto update(AuthorDto AuthorDto) {
-        AuthorModel AuthorModel = AuthorRepository.readById(AuthorDto.getId());
-        if (AuthorModel == null){
+    public AuthorDto update(AuthorDto authorDto) {
+        AuthorModel authorModel = authorRepository.readById(authorDto.getId());
+        if (authorModel == null){
             throw new NoSuchEntityException("This entity does not exist");
         }
 
-        ErrorNotification errorNotification = AuthorValidation.validate(AuthorDto);
+        ErrorNotification errorNotification = authorValidation.validate(authorDto);
         if (errorNotification.hasErrors()){
             throw new InvalidDataException(errorNotification.getErrorList().toString());
         }
-        AuthorDto.setCreateDate(AuthorModel.getCreateDate());
-        return AuthorMapper.AuthorMapper.AuthorDto(AuthorRepository.update(AuthorMapper.AuthorMapper.Author(AuthorDto)));
+        authorDto.setCreateDate(authorModel.getCreateDate());
+        return AuthorMapper.authorMapper.authorDto(authorRepository.update(AuthorMapper.authorMapper.author(authorDto)));
     }
 
     @Override
     public AuthorDto readById(Long id) {
-        AuthorModel byId = AuthorRepository.readById(id);
+        AuthorModel byId = authorRepository.readById(id);
         if (byId == null){
             throw new NoSuchEntityException("This entity does not exist");
         }
-        return AuthorMapper.AuthorMapper.AuthorDto(byId);
+        return AuthorMapper.authorMapper.authorDto(byId);
     }
 
     @Override
     public List<AuthorDto> readAll() {
-        return AuthorMapper.AuthorMapper.toListDto(AuthorRepository.readAll());
+        return AuthorMapper.authorMapper.toListDto(authorRepository.readAll());
     }
 
     @Override
     public Boolean delete(Long id) {
-        if (!AuthorRepository.delete(id)){
+        if (!authorRepository.delete(id)){
             throw new NoSuchEntityException("This entity does not exist");
         }
         return true;

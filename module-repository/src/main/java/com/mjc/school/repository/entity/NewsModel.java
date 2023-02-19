@@ -18,6 +18,7 @@ public class NewsModel {
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
     private Long authorId;
+
     public NewsModel(){
         this.id = nextId.getAndIncrement();
     }

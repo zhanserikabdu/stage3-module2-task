@@ -7,7 +7,7 @@ import com.mjc.school.controller.implementation.AuthorController;
 public class DeleteCommand implements Command<AuthorController> {
     @Override
     public void execute(AuthorController controller) {
-        MessageHelper.printMessage("Input author id for remove:");
+        MessageHelper.printMessage("Input news id for remove:");
         long id = MessageHelper.readId();
         MessageHelper.printMessage(controller.delete(id).toString());
     }

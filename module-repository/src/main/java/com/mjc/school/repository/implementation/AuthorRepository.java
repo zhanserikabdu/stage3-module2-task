@@ -1,12 +1,10 @@
 package com.mjc.school.repository.implementation;
 
-
 import com.mjc.school.repository.Repository;
 import com.mjc.school.repository.entity.AuthorModel;
 import com.mjc.school.repository.source.CustomDataSource;
 
 import java.util.List;
-
 
 public class AuthorRepository implements Repository<AuthorModel> {
     private final CustomDataSource dataSource;
@@ -40,4 +38,3 @@ public class AuthorRepository implements Repository<AuthorModel> {
         return dataSource.getAuthorMap().remove(id) != null;
     }
 }
-

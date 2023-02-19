@@ -8,12 +8,18 @@ import com.mjc.school.service.dto.AuthorDto;
 public class ExitCommand implements Command<AuthorController> {
     @Override
     public void execute(AuthorController controller) {
-        MessageHelper.printMessage("Input author id:");
+        MessageHelper.printMessage("Input news id:");
         long Id = MessageHelper.readId();
-        MessageHelper.printMessage("Input author name:");
+        MessageHelper.printMessage("Input new title:");
         String name = MessageHelper.readString();
+        //MessageHelper.printMessage("Input new content:");
+        //String content = MessageHelper.readString();
+        //MessageHelper.printMessage("Input new author ID:");
+        //long authorId = MessageHelper.readId();
 
-        AuthorDto AuthorDTO = new AuthorDto(Id, name);
-        MessageHelper.printMessage(controller.update(AuthorDTO).toString());
+        AuthorDto authorDTO = new AuthorDto(Id, name);
+
+        MessageHelper.printMessage(controller.update(authorDTO).toString());
     }
 }
+

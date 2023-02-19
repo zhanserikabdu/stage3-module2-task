@@ -1,6 +1,5 @@
 package com.mjc.school.repository.source;
 
-
 import com.mjc.school.repository.entity.AuthorModel;
 import com.mjc.school.repository.entity.NewsModel;
 
@@ -39,4 +38,3 @@ public class CustomDataSource {
         return newsMap;
     }
 }
-

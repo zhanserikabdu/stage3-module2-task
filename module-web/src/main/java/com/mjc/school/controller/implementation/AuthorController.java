@@ -7,33 +7,33 @@ import com.mjc.school.service.dto.AuthorDto;
 import java.util.List;
 
 public class AuthorController implements Controller<AuthorDto> {
-    private final Service<AuthorDto> AuthorService;
-    public AuthorController(Service<AuthorDto> AuthorService) {
-        this.AuthorService = AuthorService;
+    private final Service<AuthorDto> authorService;
+    public AuthorController(Service<AuthorDto> authorService) {
+        this.authorService = authorService;
     }
 
     @Override
-    public AuthorDto create(AuthorDto AuthorDto) {
-        return AuthorService.create(AuthorDto);
+    public AuthorDto create(AuthorDto authorDto) {
+        return authorService.create(authorDto);
     }
 
     @Override
-    public AuthorDto update(AuthorDto AuthorDto) {
-        return AuthorService.update(AuthorDto);
+    public AuthorDto update(AuthorDto authorDto) {
+        return authorService.update(authorDto);
     }
 
     @Override
     public AuthorDto readById(Long id) {
-        return AuthorService.readById(id);
+        return authorService.readById(id);
     }
 
     @Override
     public List<AuthorDto> readAll() {
-        return AuthorService.readAll();
+        return authorService.readAll();
     }
 
     @Override
     public Boolean delete(Long id) {
-        return AuthorService.delete(id);
+        return authorService.delete(id);
     }
 }
