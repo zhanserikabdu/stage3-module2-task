@@ -1,40 +1,39 @@
 package com.mjc.school.repository.implementation;
 
-import com.mjc.school.repository.Repository;
+import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.entity.NewsModel;
-import com.mjc.school.repository.source.CustomDataSource;
 
 import java.util.List;
+import java.util.Optional;
 
-public class NewsRepository implements Repository<NewsModel> {
-    private final CustomDataSource dataSource;
-
-    public NewsRepository() {
-        dataSource = CustomDataSource.getInstance();
-    }
-
-    @Override
-    public NewsModel create(NewsModel newsModel) {
-        return dataSource.getNewsMap().putIfAbsent(newsModel.getId(), newsModel);
-    }
-
-    @Override
-    public NewsModel update(NewsModel newsModel) {
-        return dataSource.getNewsMap().computeIfPresent(newsModel.getId(), (aLong, news1) -> newsModel);
-    }
-
-    @Override
-    public NewsModel readById(Long id) {
-        return dataSource.getNewsMap().get(id);
-    }
-
+public class NewsRepository implements BaseRepository<NewsModel,Long> {
     @Override
     public List<NewsModel> readAll() {
-        return List.copyOf(dataSource.getNewsMap().values());
+        return null;
     }
 
     @Override
-    public Boolean delete(Long id) {
-        return dataSource.getNewsMap().remove(id) != null;
+    public Optional<NewsModel> readById(Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public NewsModel create(NewsModel entity) {
+        return null;
+    }
+
+    @Override
+    public NewsModel update(NewsModel entity) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        return false;
+    }
+
+    @Override
+    public boolean existById(Long id) {
+        return false;
     }
 }

@@ -1,39 +1,42 @@
 package com.mjc.school.controller.implementation;
 
-import com.mjc.school.controller.Controller;
-import com.mjc.school.service.Service;
+import com.mjc.school.controller.BaseController;
 import com.mjc.school.service.dto.AuthorDto;
+import com.mjc.school.service.factory.AuthorService;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
-public class AuthorController implements Controller<AuthorDto> {
-    private final Service<AuthorDto> authorService;
-    public AuthorController(Service<AuthorDto> authorService) {
+@Controller
+public class AuthorController implements BaseController<AuthorDto, AuthorDto, Long> {
+    private final AuthorService authorService;
+
+    public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
     }
 
     @Override
-    public AuthorDto create(AuthorDto authorDto) {
-        return authorService.create(authorDto);
-    }
-
-    @Override
-    public AuthorDto update(AuthorDto authorDto) {
-        return authorService.update(authorDto);
+    public List<AuthorDto> readAll() {
+        return null;
     }
 
     @Override
     public AuthorDto readById(Long id) {
-        return authorService.readById(id);
+        return null;
     }
 
     @Override
-    public List<AuthorDto> readAll() {
-        return authorService.readAll();
+    public AuthorDto create(AuthorDto createRequest) {
+        return null;
     }
 
     @Override
-    public Boolean delete(Long id) {
-        return authorService.delete(id);
+    public AuthorDto update(AuthorDto updateRequest) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        return false;
     }
 }

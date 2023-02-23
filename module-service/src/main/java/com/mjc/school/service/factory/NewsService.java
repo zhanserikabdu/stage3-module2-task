@@ -1,72 +1,36 @@
 package com.mjc.school.service.factory;
 
-import com.mjc.school.repository.Repository;
 import com.mjc.school.repository.entity.NewsModel;
-import com.mjc.school.repository.implementation.NewsRepository;
-import com.mjc.school.service.NewsMapper;
-import com.mjc.school.service.Service;
+import com.mjc.school.service.BaseService;
 import com.mjc.school.service.dto.NewsDto;
-import com.mjc.school.service.exceptions.ErrorNotification;
-import com.mjc.school.service.exceptions.InvalidDataException;
-import com.mjc.school.service.exceptions.NoSuchEntityException;
-import com.mjc.school.service.validator.NewsValidation;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class NewsService implements Service<NewsDto> {
-    private final Repository<NewsModel> newsRepository;
-    private final NewsValidation newsValidation;
-
-    public NewsService(){
-        newsRepository = new NewsRepository();
-        newsValidation = new NewsValidation();
+@Service
+public class NewsService implements BaseService<NewsDto, NewsModel, Long> {
+    @Override
+    public List<NewsModel> readAll() {
+        return null;
     }
 
     @Override
-    public NewsDto create(NewsDto newsDto) {
-        ErrorNotification errorNotification = newsValidation.validate(newsDto);
-        if (errorNotification.hasErrors()){
-            throw new InvalidDataException(errorNotification.getErrorList().toString());
-        }
-        NewsModel newsModel = newsRepository.create(NewsMapper.newsMapper.news(newsDto));
-        return NewsMapper.newsMapper.newsDto(newsModel);
+    public NewsModel readById(Long id) {
+        return null;
     }
 
     @Override
-    public NewsDto update(NewsDto newsDto) {
-        NewsModel newsModel = newsRepository.readById(newsDto.getId());
-        if (newsModel == null){
-            throw new NoSuchEntityException("This entity does not exist");
-        }
-
-        ErrorNotification errorNotification = newsValidation.validate(newsDto);
-        if (errorNotification.hasErrors()){
-            throw new InvalidDataException(errorNotification.getErrorList().toString());
-        }
-        newsDto.setCreateDate(newsModel.getCreateDate());
-        return NewsMapper.newsMapper.newsDto(newsRepository.update(NewsMapper.newsMapper.news(newsDto)));
+    public NewsModel create(NewsDto createRequest) {
+        return null;
     }
 
     @Override
-    public NewsDto readById(Long id) {
-        NewsModel byId = newsRepository.readById(id);
-        if (byId == null){
-            throw new NoSuchEntityException("This entity does not exist");
-        }
-        return NewsMapper.newsMapper.newsDto(byId);
+    public NewsModel update(NewsDto updateRequest) {
+        return null;
     }
 
     @Override
-    public List<NewsDto> readAll() {
-        return NewsMapper.newsMapper.toListDto(newsRepository.readAll());
-    }
-
-    @Override
-    public Boolean delete(Long id) {
-        if (!newsRepository.delete(id)){
-            throw new NoSuchEntityException("This entity does not exist");
-        }
-        return true;
+    public boolean deleteById(Long id) {
+        return false;
     }
 }
-

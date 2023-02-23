@@ -1,39 +1,42 @@
 package com.mjc.school.controller.implementation;
 
-import com.mjc.school.controller.Controller;
-import com.mjc.school.service.Service;
+import com.mjc.school.controller.BaseController;
 import com.mjc.school.service.dto.NewsDto;
+import com.mjc.school.service.factory.NewsService;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
-public class NewsController implements Controller<NewsDto> {
-    private final Service<NewsDto> newsService;
-    public NewsController(Service<NewsDto> newsService) {
-        this.newsService = newsService;
-    }
+@Controller
+public class NewsController implements BaseController<NewsDto, NewsDto,Long> {
+    private final NewsService newsService;
 
-    @Override
-    public NewsDto create(NewsDto newsDto) {
-        return newsService.create(newsDto);
-    }
-
-    @Override
-    public NewsDto update(NewsDto newsDto) {
-        return newsService.update(newsDto);
-    }
-
-    @Override
-    public NewsDto readById(Long id) {
-        return newsService.readById(id);
+    public NewsController() {
+        this.newsService = new NewsService();
     }
 
     @Override
     public List<NewsDto> readAll() {
-        return newsService.readAll();
+        return null;
     }
 
     @Override
-    public Boolean delete(Long id) {
-        return newsService.delete(id);
+    public NewsDto readById(Long id) {
+        return null;
+    }
+
+    @Override
+    public NewsDto create(NewsDto createRequest) {
+        return null;
+    }
+
+    @Override
+    public NewsDto update(NewsDto updateRequest) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        return false;
     }
 }

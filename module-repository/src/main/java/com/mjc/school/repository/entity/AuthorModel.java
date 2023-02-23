@@ -1,29 +1,57 @@
 package com.mjc.school.repository.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.mjc.school.repository.model.BaseEntity;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.atomic.AtomicLong;
 
-@Getter
-@Setter
-public class AuthorModel {
-    private static AtomicLong nextId = new AtomicLong();
 
+public class AuthorModel implements BaseEntity<Long> {
     private Long id;
     private String name;
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateDate;
 
-    public AuthorModel(){
-        this.id = nextId.getAndIncrement();
-    }
-
-    public AuthorModel(String name){
-        this.id = nextId.getAndIncrement();
+    public AuthorModel(String name) {
         this.name = name;
         this.createDate = LocalDateTime.now();
         this.lastUpdateDate = LocalDateTime.now();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public LocalDateTime getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public void setLastUpdateDate(LocalDateTime lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    //public AuthorModel(String name){
+      //  this.id = nextId.getAndIncrement();
+       // this.name = name;
+       // this.createDate = LocalDateTime.now();
+        //this.lastUpdateDate = LocalDateTime.now();
+    //}
 }
