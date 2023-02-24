@@ -2,10 +2,11 @@ package com.mjc.school.repository.implementation;
 
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.entity.AuthorModel;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+@Repository
 public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
     @Override
     public List<AuthorModel> readAll() {

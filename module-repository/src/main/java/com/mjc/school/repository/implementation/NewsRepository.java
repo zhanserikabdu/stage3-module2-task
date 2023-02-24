@@ -2,10 +2,11 @@ package com.mjc.school.repository.implementation;
 
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.entity.NewsModel;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+@Repository
 public class NewsRepository implements BaseRepository<NewsModel,Long> {
     @Override
     public List<NewsModel> readAll() {
