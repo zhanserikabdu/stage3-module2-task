@@ -6,6 +6,7 @@ wrapper {
     gradleVersion = gradlewVersion
 }
 
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'jacoco'
@@ -24,10 +25,7 @@ subprojects {
         testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
         testImplementation "com.tngtech.archunit:archunit:$archUnitVersion"
-        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
-        annotationProcessor 'org.projectlombok:lombok:1.18.24'
-        implementation 'org.mapstruct:mapstruct:1.5.3.Final'
-        annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+        testImplementation "com.tngtech.archunit:archunit:$archUnitVersion"
     }
     test {
         useJUnitPlatform()
